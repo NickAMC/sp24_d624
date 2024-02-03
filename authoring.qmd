@@ -1,0 +1,56 @@
+---
+title: "Quarto Document"
+author: "Nick Climaco"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    toc-float:
+      toc-position: right
+  pdf:
+    toc: true
+    documentclass: article
+    fontsize: 11pt
+    geometry: margin=1in
+    highlight: tango
+    number-sections: true
+  
+jupyter: python3
+---
+
+
+# Overview
+
+## Description of the report
+
+For a demonstration of a line plot on a polar axis, see @fig-polar.
+
+```{python}
+#| label: fig-polar
+#| fig-cap: "A line plot on a polar axis"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+r = np.arange(0, 2, 0.01)
+theta = 2 * np.pi * r
+fig, ax = plt.subplots(
+  subplot_kw = {'projection': 'polar'} 
+)
+ax.plot(theta, r)
+ax.set_rticks([0.5, 1, 1.5, 2])
+ax.grid(True)
+plt.show()
+```
+
+# Data Collection 
+
+
+```{python}
+import pandas as pd 
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+df = pd.DataFrame(iris.data, columns = iris.feature_names)
+```
